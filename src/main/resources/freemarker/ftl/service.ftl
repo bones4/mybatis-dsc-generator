@@ -1,8 +1,8 @@
 /**
- * @filename:${entityName}Service ${createTime}
- * @project ${project}  ${version}
- * Copyright(c) 2018 ${author} Co. Ltd. 
- * All right reserved. 
+ * @program:${project}
+ * @description: ${entityName}服务接口
+ * @author: ${author}
+ * @create: ${createTime}
  */
 package ${serviceUrl};
 

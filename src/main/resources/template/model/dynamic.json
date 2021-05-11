@@ -1,0 +1,23 @@
+{
+  "type": "table",
+  "tag": "帖子",
+  "name": "dynamic",
+  "attrList": [
+    {
+      "tag": "ID",
+      "name": "id",
+      "type":"key"
+    },
+    {
+      "tag": "内容",
+      "name": "content"
+    },
+    {
+      "tag": "用户Id",
+      "name": "user_id",
+      "relationType": "outkey",
+      "relationObject": "user"
+    }
+  ]
+}
+

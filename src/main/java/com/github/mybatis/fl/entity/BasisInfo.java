@@ -6,12 +6,14 @@
  */
 package com.github.mybatis.fl.entity;
 
-import java.io.Serializable;
-import java.util.List;
-
+import com.github.mybatis.fl.service.IndexOfMethod;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 /**   
  * Copyright: Copyright (c) 2019 
@@ -30,8 +32,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BasisInfo implements Serializable{
 	private static final long serialVersionUID = 123123L;
+	//v1.1服务端补充参数
+	private String serviceType;
+	private String serviceTag;
+	private String serviceName;
 
 	private String project;
+	private String projectTag;
 	
 	private String author;
 	
@@ -74,7 +81,17 @@ public class BasisInfo implements Serializable{
 	private String idJdbcType;
 	
 	private List<PropertyInfo> cis;
-	
+	/**
+	 * 服务的方法
+	 */
+	private List<PropertyInfo> motheds;
+	/**
+	 * 服务的属性
+	 */
+	private Map<String,String> service;
+
+    public IndexOfMethod indexOf;
+
 	public BasisInfo(String project, String author, String version, String dbUrl, String dbName, String dbPassword,
 			String database, String createTime, String agile, String entityUrl, String daoUrl, String mapperUrl,
 			String serviceUrl, String serviceImplUrl, String controllerUrl) {

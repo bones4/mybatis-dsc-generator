@@ -6,11 +6,14 @@
  */
 package com.github.mybatis.fl.entity;
 
-import java.io.Serializable;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**   
  * Copyright: Copyright (c) 2019 
@@ -40,4 +43,20 @@ public class PropertyInfo implements Serializable{
 	private String property;
 	 
 	private String javaType;
+
+	/**
+	 * 方法的属性
+	 */
+	private Map<String,String> atter;
+
+	/**
+	 * 方法的入参集合
+	 */
+	private List<ParamObj> input=new ArrayList<>();
+
+	/**
+	 * 方法的出参集合
+	 */
+	private List<ParamObj> output=new ArrayList<>();
+
 }

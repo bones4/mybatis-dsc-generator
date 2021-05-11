@@ -1,0 +1,62 @@
+ ${util("output",item.atter["input"])}
+
+
+#自定义方法
+${indexOf("met")}
+
+#自定义方法大小写转换
+${util("fristLower:"+project+"")}
+
+${util("fristUpper:"+project+"")}
+
+/**
+ * @program:${project}
+ * @description: ${entityName}控制层
+ * @author: ${author}
+ * @create: ${createTime}
+ */
+package ${controllerUrl};
+
+#方法
+<#list items as item>
+@ApiOperation(value = "${item.tag}", notes = "${item.remark}")
+@PostMapping("/${item.name}")
+@CustomLog
+public ResponseJson<${item.target_output}> ${item.name}(
+    @RequestBody ${item.target_output} input )
+    {
+
+    // 校验参数
+    if (StringUtil.isEmpty(input.getCode())) {
+    return ResponseUtil.getResponseMsg(RESPONSE_CODE_ERROR, "Code为空!");
+    }
+
+    try {
+    return ${service["name"]}Service.getWechateInfoVoByCode(getWechateInfoVoByCodeRequestVo.getCode(),getWechateInfoVoByCodeRequestVo.getPlatform());
+    } catch (Exception e) {
+    logger.error("${projectTag}-${item.tag}:", e);
+    return ResponseUtil.getResponseCode(RESPONSE_CODE_ERROR);
+    }
+
+    }
+</#list>
+
+
+  @ApiOperation(value = "微信授权获取unionId和用户信息", notes = "")
+    @PostMapping("/getWechateInfoVoByCode")
+    @CustomLog
+    public ResponseJson<WechateUserInfoVo> getWechateInfoVoByCode(
+    @RequestBody GetWechateInfoVoByCodeRequestDto getWechateInfoVoByCodeRequestVo )
+    {
+    // 校验参数
+    if (StringUtil.isEmpty(getWechateInfoVoByCodeRequestVo.getCode())) {
+    return ResponseUtil.getResponseMsg(RESPONSE_CODE_ERROR, "Code为空!");
+    }
+
+    try {
+    return workplaceTestingService.getWechateInfoVoByCode(getWechateInfoVoByCodeRequestVo.getCode(),getWechateInfoVoByCodeRequestVo.getPlatform());
+    } catch (Exception e) {
+    logger.error("职场测试APP-微信授权获取unionId和用户信息:", e);
+    return ResponseUtil.getResponseCode(RESPONSE_CODE_ERROR);
+    }
+    }

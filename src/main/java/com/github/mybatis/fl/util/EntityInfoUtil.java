@@ -6,16 +6,12 @@
  */
 package com.github.mybatis.fl.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.github.mybatis.fl.entity.BasisInfo;
 import com.github.mybatis.fl.entity.PropertyInfo;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 /**   
  * Copyright: Copyright (c) 2019 
  * 
@@ -53,8 +49,15 @@ public class EntityInfoUtil {
 				}else {
 					ci.setJdbcType(jdbcType);
 				}
-				ci.setComment(comment);
-				ci.setProperty(MySqlToJavaUtil.changeToJavaFiled(column));
+				ci.setComment(comment
+						.replaceAll("\\n","")
+						.replaceAll("\\r","")
+				);
+				//下划线
+				String column1= MySqlToJavaUtil.changeToJavaFiled(column);
+				//驼峰
+				//String column2=PatternUtils.lineToHump(column1);
+				ci.setProperty(column1);
 				ci.setJavaType(MySqlToJavaUtil.jdbcTypeToJavaType(jdbcType));
 				//设置注解类型
 				if (column.equalsIgnoreCase("id")) {

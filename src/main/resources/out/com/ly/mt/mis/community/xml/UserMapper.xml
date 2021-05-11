@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ly.mt.mis.community.mapper.UserMapper">
+	<resultMap id="BaseResultMap" type="com.ly.mt.mis.community.entity.User">
+	<id column="id" jdbcType="VARCHAR" property="id" />
+	<id column="client_id" jdbcType="VARCHAR" property="client_id" />
+	<id column="user_name" jdbcType="VARCHAR" property="user_name" />
+	<id column="mobile" jdbcType="VARCHAR" property="mobile" />
+	<id column="email" jdbcType="VARCHAR" property="email" />
+	<id column="wx_open_id" jdbcType="VARCHAR" property="wx_open_id" />
+	<id column="qq_open_id" jdbcType="VARCHAR" property="qq_open_id" />
+	<id column="login_name" jdbcType="VARCHAR" property="login_name" />
+	<id column="password" jdbcType="VARCHAR" property="password" />
+	<id column="id_card" jdbcType="VARCHAR" property="id_card" />
+	<id column="sex" jdbcType="VARCHAR" property="sex" />
+	<id column="birthday" jdbcType="VARCHAR" property="birthday" />
+	<id column="province_code" jdbcType="VARCHAR" property="province_code" />
+	<id column="city_code" jdbcType="VARCHAR" property="city_code" />
+	<id column="district_code" jdbcType="VARCHAR" property="district_code" />
+	<id column="user_type" jdbcType="VARCHAR" property="user_type" />
+	<id column="nick_name" jdbcType="VARCHAR" property="nick_name" />
+	<id column="user_status" jdbcType="VARCHAR" property="user_status" />
+	<id column="shop_id" jdbcType="VARCHAR" property="shop_id" />
+	<id column="auditor" jdbcType="VARCHAR" property="auditor" />
+	<id column="audit_remark" jdbcType="VARCHAR" property="audit_remark" />
+	<id column="avatar_pic_src" jdbcType="VARCHAR" property="avatar_pic_src" />
+	<id column="notice_config" jdbcType="VARCHAR" property="notice_config" />
+	<id column="first_login" jdbcType="VARCHAR" property="first_login" />
+	<id column="last_login_time" jdbcType="VARCHAR" property="last_login_time" />
+	<id column="last_login_ip" jdbcType="VARCHAR" property="last_login_ip" />
+	<id column="quick_type" jdbcType="VARCHAR" property="quick_type" />
+	<id column="channel" jdbcType="VARCHAR" property="channel" />
+	<id column="material" jdbcType="VARCHAR" property="material" />
+	<id column="data_source" jdbcType="VARCHAR" property="data_source" />
+	<id column="project_type" jdbcType="VARCHAR" property="project_type" />
+	<id column="create_time" jdbcType="VARCHAR" property="create_time" />
+	<id column="create_user" jdbcType="VARCHAR" property="create_user" />
+	<id column="update_time" jdbcType="VARCHAR" property="update_time" />
+	<id column="update_user" jdbcType="VARCHAR" property="update_user" />
+	<id column="valid_status" jdbcType="VARCHAR" property="valid_status" />
+	<id column="valid_time" jdbcType="VARCHAR" property="valid_time" />
+	<id column="valid_user" jdbcType="VARCHAR" property="valid_user" />
+	<id column="account_type" jdbcType="VARCHAR" property="account_type" />
+	<id column="first_login_time" jdbcType="VARCHAR" property="first_login_time" />
+	<id column="avatar_pic_src_default" jdbcType="VARCHAR" property="avatar_pic_src_default" />
+	<id column="user_sign" jdbcType="VARCHAR" property="user_sign" />
+	</resultMap>
+	<sql id="Base_Column_List">
+	id, client_id, user_name, mobile, email, wx_open_id, qq_open_id, login_name, password, id_card, sex, birthday, province_code, city_code, district_code, user_type, nick_name, user_status, shop_id, auditor, audit_remark, avatar_pic_src, notice_config, first_login, last_login_time, last_login_ip, quick_type, channel, material, data_source, project_type, create_time, create_user, update_time, update_user, valid_status, valid_time, valid_user, account_type, first_login_time, avatar_pic_src_default, user_sign
+	</sql>
+	<!-- 查询 -->
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where id = #{id}
+	</select>
+	<!-- 删除 -->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from user
+		where id = #{id}
+	</delete>
+	<!-- 选择添加 -->
+	<insert id="insertSelective" parameterType="com.ly.mt.mis.community.entity.User">
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != '' ">
+				id,
+			</if>
+			<if test="client_id != null and client_id != '' ">
+				client_id,
+			</if>
+			<if test="user_name != null and user_name != '' ">
+				user_name,
+			</if>
+			<if test="mobile != null and mobile != '' ">
+				mobile,
+			</if>
+			<if test="email != null and email != '' ">
+				email,
+			</if>
+			<if test="wx_open_id != null and wx_open_id != '' ">
+				wx_open_id,
+			</if>
+			<if test="qq_open_id != null and qq_open_id != '' ">
+				qq_open_id,
+			</if>
+			<if test="login_name != null and login_name != '' ">
+				login_name,
+			</if>
+			<if test="password != null and password != '' ">
+				password,
+			</if>
+			<if test="id_card != null and id_card != '' ">
+				id_card,
+			</if>
+			<if test="sex != null and sex != '' ">
+				sex,
+			</if>
+			<if test="birthday != null and birthday != '' ">
+				birthday,
+			</if>
+			<if test="province_code != null and province_code != '' ">
+				province_code,
+			</if>
+			<if test="city_code != null and city_code != '' ">
+				city_code,
+			</if>
+			<if test="district_code != null and district_code != '' ">
+				district_code,
+			</if>
+			<if test="user_type != null and user_type != '' ">
+				user_type,
+			</if>
+			<if test="nick_name != null and nick_name != '' ">
+				nick_name,
+			</if>
+			<if test="user_status != null and user_status != '' ">
+				user_status,
+			</if>
+			<if test="shop_id != null and shop_id != '' ">
+				shop_id,
+			</if>
+			<if test="auditor != null and auditor != '' ">
+				auditor,
+			</if>
+			<if test="audit_remark != null and audit_remark != '' ">
+				audit_remark,
+			</if>
+			<if test="avatar_pic_src != null and avatar_pic_src != '' ">
+				avatar_pic_src,
+			</if>
+			<if test="notice_config != null and notice_config != '' ">
+				notice_config,
+			</if>
+			<if test="first_login != null and first_login != '' ">
+				first_login,
+			</if>
+			<if test="last_login_time != null and last_login_time != '' ">
+				last_login_time,
+			</if>
+			<if test="last_login_ip != null and last_login_ip != '' ">
+				last_login_ip,
+			</if>
+			<if test="quick_type != null and quick_type != '' ">
+				quick_type,
+			</if>
+			<if test="channel != null and channel != '' ">
+				channel,
+			</if>
+			<if test="material != null and material != '' ">
+				material,
+			</if>
+			<if test="data_source != null and data_source != '' ">
+				data_source,
+			</if>
+			<if test="project_type != null and project_type != '' ">
+				project_type,
+			</if>
+			<if test="create_time != null and create_time != '' ">
+				create_time,
+			</if>
+			<if test="create_user != null and create_user != '' ">
+				create_user,
+			</if>
+			<if test="update_time != null and update_time != '' ">
+				update_time,
+			</if>
+			<if test="update_user != null and update_user != '' ">
+				update_user,
+			</if>
+			<if test="valid_status != null and valid_status != '' ">
+				valid_status,
+			</if>
+			<if test="valid_time != null and valid_time != '' ">
+				valid_time,
+			</if>
+			<if test="valid_user != null and valid_user != '' ">
+				valid_user,
+			</if>
+			<if test="account_type != null and account_type != '' ">
+				account_type,
+			</if>
+			<if test="first_login_time != null and first_login_time != '' ">
+				first_login_time,
+			</if>
+			<if test="avatar_pic_src_default != null and avatar_pic_src_default != '' ">
+				avatar_pic_src_default,
+			</if>
+			<if test="user_sign != null and user_sign != '' ">
+				user_sign,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != '' ">
+				#{id},
+			</if>
+			<if test="client_id != null and client_id != '' ">
+				#{client_id},
+			</if>
+			<if test="user_name != null and user_name != '' ">
+				#{user_name},
+			</if>
+			<if test="mobile != null and mobile != '' ">
+				#{mobile},
+			</if>
+			<if test="email != null and email != '' ">
+				#{email},
+			</if>
+			<if test="wx_open_id != null and wx_open_id != '' ">
+				#{wx_open_id},
+			</if>
+			<if test="qq_open_id != null and qq_open_id != '' ">
+				#{qq_open_id},
+			</if>
+			<if test="login_name != null and login_name != '' ">
+				#{login_name},
+			</if>
+			<if test="password != null and password != '' ">
+				#{password},
+			</if>
+			<if test="id_card != null and id_card != '' ">
+				#{id_card},
+			</if>
+			<if test="sex != null and sex != '' ">
+				#{sex},
+			</if>
+			<if test="birthday != null and birthday != '' ">
+				#{birthday},
+			</if>
+			<if test="province_code != null and province_code != '' ">
+				#{province_code},
+			</if>
+			<if test="city_code != null and city_code != '' ">
+				#{city_code},
+			</if>
+			<if test="district_code != null and district_code != '' ">
+				#{district_code},
+			</if>
+			<if test="user_type != null and user_type != '' ">
+				#{user_type},
+			</if>
+			<if test="nick_name != null and nick_name != '' ">
+				#{nick_name},
+			</if>
+			<if test="user_status != null and user_status != '' ">
+				#{user_status},
+			</if>
+			<if test="shop_id != null and shop_id != '' ">
+				#{shop_id},
+			</if>
+			<if test="auditor != null and auditor != '' ">
+				#{auditor},
+			</if>
+			<if test="audit_remark != null and audit_remark != '' ">
+				#{audit_remark},
+			</if>
+			<if test="avatar_pic_src != null and avatar_pic_src != '' ">
+				#{avatar_pic_src},
+			</if>
+			<if test="notice_config != null and notice_config != '' ">
+				#{notice_config},
+			</if>
+			<if test="first_login != null and first_login != '' ">
+				#{first_login},
+			</if>
+			<if test="last_login_time != null and last_login_time != '' ">
+				#{last_login_time},
+			</if>
+			<if test="last_login_ip != null and last_login_ip != '' ">
+				#{last_login_ip},
+			</if>
+			<if test="quick_type != null and quick_type != '' ">
+				#{quick_type},
+			</if>
+			<if test="channel != null and channel != '' ">
+				#{channel},
+			</if>
+			<if test="material != null and material != '' ">
+				#{material},
+			</if>
+			<if test="data_source != null and data_source != '' ">
+				#{data_source},
+			</if>
+			<if test="project_type != null and project_type != '' ">
+				#{project_type},
+			</if>
+			<if test="create_time != null and create_time != '' ">
+				#{create_time},
+			</if>
+			<if test="create_user != null and create_user != '' ">
+				#{create_user},
+			</if>
+			<if test="update_time != null and update_time != '' ">
+				#{update_time},
+			</if>
+			<if test="update_user != null and update_user != '' ">
+				#{update_user},
+			</if>
+			<if test="valid_status != null and valid_status != '' ">
+				#{valid_status},
+			</if>
+			<if test="valid_time != null and valid_time != '' ">
+				#{valid_time},
+			</if>
+			<if test="valid_user != null and valid_user != '' ">
+				#{valid_user},
+			</if>
+			<if test="account_type != null and account_type != '' ">
+				#{account_type},
+			</if>
+			<if test="first_login_time != null and first_login_time != '' ">
+				#{first_login_time},
+			</if>
+			<if test="avatar_pic_src_default != null and avatar_pic_src_default != '' ">
+				#{avatar_pic_src_default},
+			</if>
+			<if test="user_sign != null and user_sign != '' ">
+				#{user_sign},
+			</if>
+		</trim>
+	</insert>
+	<!-- 选择修改 -->
+	<update id="updateByPrimaryKeySelective" parameterType="com.ly.mt.mis.community.entity.User">
+		update user
+		<set>
+			<if test="id != null and id != '' ">
+				id = #{id},
+			</if>
+			<if test="client_id != null and client_id != '' ">
+				client_id = #{client_id},
+			</if>
+			<if test="user_name != null and user_name != '' ">
+				user_name = #{user_name},
+			</if>
+			<if test="mobile != null and mobile != '' ">
+				mobile = #{mobile},
+			</if>
+			<if test="email != null and email != '' ">
+				email = #{email},
+			</if>
+			<if test="wx_open_id != null and wx_open_id != '' ">
+				wx_open_id = #{wx_open_id},
+			</if>
+			<if test="qq_open_id != null and qq_open_id != '' ">
+				qq_open_id = #{qq_open_id},
+			</if>
+			<if test="login_name != null and login_name != '' ">
+				login_name = #{login_name},
+			</if>
+			<if test="password != null and password != '' ">
+				password = #{password},
+			</if>
+			<if test="id_card != null and id_card != '' ">
+				id_card = #{id_card},
+			</if>
+			<if test="sex != null and sex != '' ">
+				sex = #{sex},
+			</if>
+			<if test="birthday != null and birthday != '' ">
+				birthday = #{birthday},
+			</if>
+			<if test="province_code != null and province_code != '' ">
+				province_code = #{province_code},
+			</if>
+			<if test="city_code != null and city_code != '' ">
+				city_code = #{city_code},
+			</if>
+			<if test="district_code != null and district_code != '' ">
+				district_code = #{district_code},
+			</if>
+			<if test="user_type != null and user_type != '' ">
+				user_type = #{user_type},
+			</if>
+			<if test="nick_name != null and nick_name != '' ">
+				nick_name = #{nick_name},
+			</if>
+			<if test="user_status != null and user_status != '' ">
+				user_status = #{user_status},
+			</if>
+			<if test="shop_id != null and shop_id != '' ">
+				shop_id = #{shop_id},
+			</if>
+			<if test="auditor != null and auditor != '' ">
+				auditor = #{auditor},
+			</if>
+			<if test="audit_remark != null and audit_remark != '' ">
+				audit_remark = #{audit_remark},
+			</if>
+			<if test="avatar_pic_src != null and avatar_pic_src != '' ">
+				avatar_pic_src = #{avatar_pic_src},
+			</if>
+			<if test="notice_config != null and notice_config != '' ">
+				notice_config = #{notice_config},
+			</if>
+			<if test="first_login != null and first_login != '' ">
+				first_login = #{first_login},
+			</if>
+			<if test="last_login_time != null and last_login_time != '' ">
+				last_login_time = #{last_login_time},
+			</if>
+			<if test="last_login_ip != null and last_login_ip != '' ">
+				last_login_ip = #{last_login_ip},
+			</if>
+			<if test="quick_type != null and quick_type != '' ">
+				quick_type = #{quick_type},
+			</if>
+			<if test="channel != null and channel != '' ">
+				channel = #{channel},
+			</if>
+			<if test="material != null and material != '' ">
+				material = #{material},
+			</if>
+			<if test="data_source != null and data_source != '' ">
+				data_source = #{data_source},
+			</if>
+			<if test="project_type != null and project_type != '' ">
+				project_type = #{project_type},
+			</if>
+			<if test="create_time != null and create_time != '' ">
+				create_time = #{create_time},
+			</if>
+			<if test="create_user != null and create_user != '' ">
+				create_user = #{create_user},
+			</if>
+			<if test="update_time != null and update_time != '' ">
+				update_time = #{update_time},
+			</if>
+			<if test="update_user != null and update_user != '' ">
+				update_user = #{update_user},
+			</if>
+			<if test="valid_status != null and valid_status != '' ">
+				valid_status = #{valid_status},
+			</if>
+			<if test="valid_time != null and valid_time != '' ">
+				valid_time = #{valid_time},
+			</if>
+			<if test="valid_user != null and valid_user != '' ">
+				valid_user = #{valid_user},
+			</if>
+			<if test="account_type != null and account_type != '' ">
+				account_type = #{account_type},
+			</if>
+			<if test="first_login_time != null and first_login_time != '' ">
+				first_login_time = #{first_login_time},
+			</if>
+			<if test="avatar_pic_src_default != null and avatar_pic_src_default != '' ">
+				avatar_pic_src_default = #{avatar_pic_src_default},
+			</if>
+			<if test="user_sign != null and user_sign != '' ">
+				user_sign = #{user_sign},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 组合条件查询 -->
+	<select id="queryUserList" parameterType="com.ly.mt.mis.community.entity.User"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		<where>
+			<if test="id != null">
+				id = #{id}
+			</if>
+			<if test="client_id  != null and client_id != '' ">
+				AND client_id = #{client_id}
+			</if>
+			<if test="user_name  != null and user_name != '' ">
+				AND user_name = #{user_name}
+			</if>
+			<if test="mobile  != null and mobile != '' ">
+				AND mobile = #{mobile}
+			</if>
+			<if test="email  != null and email != '' ">
+				AND email = #{email}
+			</if>
+			<if test="wx_open_id  != null and wx_open_id != '' ">
+				AND wx_open_id = #{wx_open_id}
+			</if>
+			<if test="qq_open_id  != null and qq_open_id != '' ">
+				AND qq_open_id = #{qq_open_id}
+			</if>
+			<if test="login_name  != null and login_name != '' ">
+				AND login_name = #{login_name}
+			</if>
+			<if test="password  != null and password != '' ">
+				AND password = #{password}
+			</if>
+			<if test="id_card  != null and id_card != '' ">
+				AND id_card = #{id_card}
+			</if>
+			<if test="sex  != null and sex != '' ">
+				AND sex = #{sex}
+			</if>
+			<if test="birthday  != null and birthday != '' ">
+				AND birthday = #{birthday}
+			</if>
+			<if test="province_code  != null and province_code != '' ">
+				AND province_code = #{province_code}
+			</if>
+			<if test="city_code  != null and city_code != '' ">
+				AND city_code = #{city_code}
+			</if>
+			<if test="district_code  != null and district_code != '' ">
+				AND district_code = #{district_code}
+			</if>
+			<if test="user_type  != null and user_type != '' ">
+				AND user_type = #{user_type}
+			</if>
+			<if test="nick_name  != null and nick_name != '' ">
+				AND nick_name = #{nick_name}
+			</if>
+			<if test="user_status  != null and user_status != '' ">
+				AND user_status = #{user_status}
+			</if>
+			<if test="shop_id  != null and shop_id != '' ">
+				AND shop_id = #{shop_id}
+			</if>
+			<if test="auditor  != null and auditor != '' ">
+				AND auditor = #{auditor}
+			</if>
+			<if test="audit_remark  != null and audit_remark != '' ">
+				AND audit_remark = #{audit_remark}
+			</if>
+			<if test="avatar_pic_src  != null and avatar_pic_src != '' ">
+				AND avatar_pic_src = #{avatar_pic_src}
+			</if>
+			<if test="notice_config  != null and notice_config != '' ">
+				AND notice_config = #{notice_config}
+			</if>
+			<if test="first_login  != null and first_login != '' ">
+				AND first_login = #{first_login}
+			</if>
+			<if test="last_login_time  != null and last_login_time != '' ">
+				AND last_login_time = #{last_login_time}
+			</if>
+			<if test="last_login_ip  != null and last_login_ip != '' ">
+				AND last_login_ip = #{last_login_ip}
+			</if>
+			<if test="quick_type  != null and quick_type != '' ">
+				AND quick_type = #{quick_type}
+			</if>
+			<if test="channel  != null and channel != '' ">
+				AND channel = #{channel}
+			</if>
+			<if test="material  != null and material != '' ">
+				AND material = #{material}
+			</if>
+			<if test="data_source  != null and data_source != '' ">
+				AND data_source = #{data_source}
+			</if>
+			<if test="project_type  != null and project_type != '' ">
+				AND project_type = #{project_type}
+			</if>
+			<if test="create_time  != null and create_time != '' ">
+				AND create_time = #{create_time}
+			</if>
+			<if test="create_user  != null and create_user != '' ">
+				AND create_user = #{create_user}
+			</if>
+			<if test="update_time  != null and update_time != '' ">
+				AND update_time = #{update_time}
+			</if>
+			<if test="update_user  != null and update_user != '' ">
+				AND update_user = #{update_user}
+			</if>
+			<if test="valid_status  != null and valid_status != '' ">
+				AND valid_status = #{valid_status}
+			</if>
+			<if test="valid_time  != null and valid_time != '' ">
+				AND valid_time = #{valid_time}
+			</if>
+			<if test="valid_user  != null and valid_user != '' ">
+				AND valid_user = #{valid_user}
+			</if>
+			<if test="account_type  != null and account_type != '' ">
+				AND account_type = #{account_type}
+			</if>
+			<if test="first_login_time  != null and first_login_time != '' ">
+				AND first_login_time = #{first_login_time}
+			</if>
+			<if test="avatar_pic_src_default  != null and avatar_pic_src_default != '' ">
+				AND avatar_pic_src_default = #{avatar_pic_src_default}
+			</if>
+			<if test="user_sign  != null and user_sign != '' ">
+				AND user_sign = #{user_sign}
+			</if>
+		</where>
+	</select>
+</mapper>

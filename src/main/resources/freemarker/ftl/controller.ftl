@@ -1,8 +1,8 @@
 /**
- * @filename:${entityName}Controller ${createTime}
- * @project ${project}  ${version}
- * Copyright(c) 2018 ${author} Co. Ltd. 
- * All right reserved. 
+ * @program:${project}
+ * @description: ${entityName}控制层
+ * @author: ${author}
+ * @create: ${createTime}
  */
 package ${controllerUrl};
 

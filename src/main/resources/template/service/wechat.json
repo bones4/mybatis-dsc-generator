@@ -1,0 +1,65 @@
+{
+  "type": "service",
+  "tag": "微信服务",
+  "name": "wechat",
+  "motheds": [
+    {
+      "tag": "用户提交举报",
+      "name": "submitFeedBack",
+      "type":"mothed",
+      "remark":"",
+      "inputtype":"default",
+      "input":[
+        {"tag":"举报问题类型","name":"reportType","type":"string"},
+        {"tag":"补充问题说明","name":"reportRemark","type":"string"}
+      ],
+      "outputtype":"no"
+    },
+    {
+      "tag": "加载用户的黑名单",
+      "name": "loadUserBlackList",
+      "type":"mothed",
+      "remark":"",
+      "inputtype":"null",
+      "outputtype":"null"
+    },
+    {
+      "tag": "用户对他人拉黑/解除拉黑",
+      "name": "setBlackList",
+      "type":"mothed",
+      "remark":"",
+      "inputtype":"default",
+      "input":[
+        {"tag":"被拉黑者用户Id","name":"targetUserId","type":"string","required":"false"},
+        {"tag":"操作状态（1拉黑/0解除）","name":"status","type":"string"}
+      ],
+      "outputtype":"null"
+    },
+    {
+      "tag": "用户屏蔽/解除屏蔽帖子",
+      "name": "setBlackList",
+      "type":"mothed",
+      "remark":"",
+      "inputtype":"default",
+      "input":[
+        {"tag":"被拉黑者用户Id","name":"targetUserId","type":"string"},
+        {"tag":"操作状态（1拉黑/2解除）","name":"status","type":"string"}
+      ],
+      "outputtype":"null"
+    },
+    {
+      "tag": "加载用户的屏蔽帖子列表",
+      "name": "setBlackList",
+      "type":"mothed",
+      "remark":"",
+      "inputtype":"default",
+      "input":[
+        {"tag":"被拉黑者用户Id","name":"targetUserId","type":"string"},
+        {"tag":"操作状态（1拉黑/2解除）","name":"status","type":"string"}
+      ],
+      "outputtype":"null"
+    }
+
+  ]
+}
+

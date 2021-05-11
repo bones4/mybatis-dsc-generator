@@ -1,0 +1,16 @@
+{
+  "type": "table",
+  "tag": "user",
+  "name": "用户",
+  "attrList": [
+    {
+      "tag": "ID",
+      "name": "id"
+    },
+    {
+      "tag": "用户名",
+      "name": "user_name"
+    }
+  ]
+  //
+}

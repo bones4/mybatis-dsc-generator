@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="${daoUrl}.${entityName}Dao">
+<mapper namespace="${daoUrl}.${entityName}Mapper">
 	<resultMap id="BaseResultMap" type="${entityUrl}.${entityName}">
 	<#list cis as ci>
-	<id column="${ci.column}" jdbcType="${ci.jdbcType?upper_case}" property="${ci.property}" />
+	<id column="${ci.column}" jdbcType="VARCHAR" property="${ci.column}" />
 	</#list>
 	</resultMap>
 	<sql id="Base_Column_List">
@@ -15,31 +15,27 @@
 		select
 		<include refid="Base_Column_List" />
 		from ${table}
-		where id = ${r'#{'}id,jdbcType=${idJdbcType?upper_case}}
+		where id = ${r'#{'}id}
 	</select>
 	<!-- 删除 -->
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.${idType}">
 		delete from ${table}
-		where id = ${r'#{'}id,jdbcType=${idJdbcType?upper_case}}
+		where id = ${r'#{'}id}
 	</delete>
 	<!-- 选择添加 -->
 	<insert id="insertSelective" parameterType="${entityUrl}.${entityName}">
-		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.${idType}">
-			SELECT
-			LAST_INSERT_ID()
-		</selectKey>
 		insert into ${table}
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<#list cis as ci>
-			<if test="${ci.property} != null">
+			<if test="${ci.column} != null and ${ci.column} != '' ">
 				${ci.column},
 			</if>
 			</#list>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<#list cis as ci>
-			<if test="${ci.property} != null">
-				${r'#{'}${ci.property},jdbcType=${ci.jdbcType?upper_case}},
+			<if test="${ci.column} != null and ${ci.column} != '' ">
+				${r'#{'}${ci.column}},
 			</if>
 			</#list>
 		</trim>
@@ -49,12 +45,12 @@
 		update ${table}
 		<set>
 			<#list cis as ci>
-			<if test="${ci.property} != null">
-				${ci.column} = ${r'#{'}${ci.property},jdbcType=${ci.jdbcType?upper_case}},
+			<if test="${ci.column} != null and ${ci.column} != '' ">
+				${ci.column} = ${r'#{'}${ci.column}},
 			</if>
 			</#list>
 		</set>
-		where id = ${r'#{'}id,jdbcType=${idJdbcType}}
+		where id = ${r'#{'}id}
 	</update>
 	<!-- 组合条件查询 -->
 	<select id="query${entityName}List" parameterType="${entityUrl}.${entityName}"
@@ -64,12 +60,12 @@
 		from ${table}
 		<where>
 			<if test="id != null">
-				id = ${r'#{'}id,jdbcType=${idJdbcType?upper_case}}
+				id = ${r'#{'}id}
 			</if>
 			<#list cis as ci>
 			<#if ci.column!="id">
-			<if test="${ci.property}  != null">
-				AND ${ci.column} = ${r'#{'}${ci.property} ,jdbcType=${ci.jdbcType?upper_case}}
+			<if test="${ci.column}  != null and ${ci.column} != '' ">
+				AND ${ci.column} = ${r'#{'}${ci.column}}
 			</if>
 			</#if>
 			</#list>

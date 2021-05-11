@@ -1,0 +1,60 @@
+{
+  "type": "service",
+  "tag": "微信服务",
+  "name": "wechat",
+  "motheds": [
+    {
+      "tag": "根据项目别名获取微信appid",
+      "name": "getWechatAppIdByNiceName",
+      "type":"mothed",
+      "remark":"",
+      "inputtype":"default",
+      "input":[{"tag":"昵称","name":"nickName","type":"string"}],
+      "outputtype":"default",
+      "output":[{"tag":"微信应用appId","name":"appId","type":"string"}]
+    },
+    {
+      "tag": "用户绑定手机号",
+      "name": "bingPhone",
+      "type":"mothed",
+      "remark":"",
+      "inputtype":"default",
+      "input":[{"tag":"用户Id","name":"userId"},{"tag":"用户手机号","name":"phone"}],
+      "outputtype":"",
+      "output":""
+    } ,
+    {
+      "tag": "用户设置密码",
+      "name": "bingPhone",
+      "type":"mothed",
+      "remark":"",
+      "inputtype":"default",
+      "input":[{"tag":"用户Id","name":"userId"},{"tag":"用户密码","name":"password"}],
+      "outputtype":"",
+      "output":""
+    },
+    {
+      "tag": "查询已登录用户微信绑定状态",
+      "name": "getUserWechatBindState",
+      "type":"mothed",
+      "remark":"返回是否",
+      "inputtype":"default",
+      "input":[{"tag":"用户Id","name":"userId"}],
+      "outputtype":"default",
+      "output":[{"tag":"绑定状态","name":"status"}],
+      "":""
+    },
+    {
+      "tag": "微信解绑",
+      "name": "unBindWechat",
+      "type":"mothed",
+      "remark":"",
+      "inputtype":"default",
+      "input":[{"tag":"用户Id","name":"userId"}],
+      "outputtype":"",
+      "output":"",
+      "":""
+    }
+  ]
+}
+

@@ -6,6 +6,7 @@
  */
 package com.github.mybatis.fl.util;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.mybatis.fl.entity.BasisInfo;
 import com.github.mybatis.fl.entity.JsonResult;
 import com.github.mybatis.fl.entity.PropertyInfo;
@@ -34,6 +35,20 @@ public class Generator {
 	public static final String SERVICE_IMPL="serviceImpl";
 	public static final String CONTROLLER="controller";
 
+	/**
+	 * @param url
+	 * @param bi
+	 * @param root
+	 * @param templateName
+	 * @param outfileName
+	 * @return
+	 */
+	//①创建自定义类
+	public static JsonResult createTemplate(String url,BasisInfo bi,Object root,String templateName,String outfileName) {
+		String fileUrl= getGeneratorFileUrl(url, bi.getEntityUrl(), bi.getEntityName(), outfileName);
+
+		return FreemarkerUtil.createFile(bi, templateName, fileUrl,root);
+	}
 
 	//①创建实体类
 	public static JsonResult createEntity(String url,BasisInfo bi) {
@@ -78,6 +93,13 @@ public class Generator {
 		return FreemarkerUtil.createFile(bi, "controller.ftl", fileUrl);
 	}
 
+	//⑥创建CONTROLLER
+	public static JsonResult createController2(String url, BasisInfo bi, JSONObject root) {
+		String fileUrl= getGeneratorFileUrl(url, bi.getControllerUrl(), bi.getEntityName(), CONTROLLER);
+		return FreemarkerUtil.createFile(bi, "controller2.ftl", fileUrl);
+	}
+
+
 	//生成文件
 	public static String getGeneratorFileUrl(String url,String packageUrl,String entityName, String type){
 		if (type.equals("entity")) {
@@ -93,7 +115,13 @@ public class Generator {
 		}else if(type.equals("controller")) {
 			return url+pageToUrl(packageUrl)+entityName+"Controller.java";
 		}
-		return null;
+		else if(type.equals("controller2")) {
+			return url+pageToUrl(packageUrl)+entityName+"Controller2.java";
+		}
+		else{
+			return url+pageToUrl(packageUrl)+type;
+		}
+		//return null;
 	}
 
 	public static String pageToUrl(String url) {
@@ -115,5 +143,13 @@ public class Generator {
 			}
 		}
 		return file.delete();
+	}
+
+
+	//⑥创建CONTROLLER
+	public static JsonResult createInputDto(String url, BasisInfo bi, JSONObject root) {
+		String fileUrl= getGeneratorFileUrl(url, bi.getControllerUrl(), bi.getEntityName(),
+				ENTITY);
+		return FreemarkerUtil.createFile(bi, "entity.ftl", fileUrl);
 	}
 }
